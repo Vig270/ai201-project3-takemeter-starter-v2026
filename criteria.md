@@ -51,63 +51,67 @@ whether you hit them:
 
 ---
 
-## 1.
+## 1. Overall Accuracy 
 
-<!-- Your criterion. It must name a number. -->
-
-
-
-**Why this target:**
+at least 0.65
 
 
 
----
-
-## 2.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
+**Why this target: I chose 0.65 because it is significantly better than random guessing among the three labels, while still being a realistic target for 200 posts.**
 
 
 
 ---
 
-## 3.
-
-<!-- Your criterion. -->
+## 2. Per-Label performance
 
 
-
-**Why this target:**
-
+at least 0.55
 
 
----
-
-## 4.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
+**Why this target: I chose 0.65 because it is significantly better than random guessing among the three labels, while still being a realistic target for 200 posts.**
 
 
 
 ---
 
-## 5.
+## 3. Dataset Balance
 
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
+largest label no more than 1.5 times the smallest.
 
 
+
+**Why this target:I chose 0.65 because it is significantly better than random guessing among the three labels, while still being a realistic target for 200 posts.**
+
+
+
+---
+
+## 4. Labeling consistency
+
+at least 0.70.
+
+
+**Why this target:I chose 0.70 because I want two people independently labeling the same posts to agree at least 70% of the time, showing that the label definitions are reasonably clear.**
+
+
+
+---
+
+## 5. Prediction Confidence
+
+at least 0.75.
+
+
+
+**Why this target:I chose 0.75 because I want predictions marked as high-confidence to be correct at least 75% of the time, rather than having confidence scores that are misleading.**
+
+
+
+
+
+
+Before using these, I will write my own rationale for each target and confirm that the notebook or dataset provides a way to measure it.
 
 ---
 

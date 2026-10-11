@@ -48,40 +48,35 @@
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+### `guide_analysis`
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
+**Definition:** Posts that explain Wizard101 systems, strategies, leveling, gear optimization, farming routes, or combat mechanics.
 
-### `label_one`
+**Example 1:** Best farming seed route for Beastmoon gear
 
-**Definition:**
+**Example 2:** How to build a balanced Deckathalon deck for each floor
 
-**Example 1:**
->
+### `help_question`
 
-**Example 2:**
->
+**Definition:** Posts whose primary purpose is to ask a gameplay question or request help with a Wizard101 problem.
 
-### `label_two`
+**Example 1:** What gear should I use at level 60?
 
-**Definition:**
+**Example 2:** [Insert a different real gameplay question from your reading.]
 
-**Example 1:**
->
+### `opinion_reaction`
 
-**Example 2:**
->
+**Definition:** Posts that primarily express personal opinions, complaints, praise, or reactions about Wizard101.
+
+**Example 1:** Pets are too RNG-based.
+
+**Example 2:** The Summer 2026 update made the game worse overall.
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `guide_analysis` and `help_question`
 
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
-
+**The decision rule I used every time:** If a post primarily asks for information, advice, or assistance, I label it `help_question`. If it primarily explains a mechanic, provides a strategy, or analyzes gameplay, I label it `guide_analysis`. When a post does both, I choose the label that best reflects its primary purpose.
 
 
 ---

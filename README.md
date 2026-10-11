@@ -39,8 +39,6 @@
 
 ## What This Does
 
-## What This Does
-
 TakeMeter is a text-classification project that categorizes public posts from the Wizard101 subreddit into three labels: `guide_analysis`, `help_question`, and `opinion_reaction`. It uses a fine-tuned DistilBERT model to predict a label based on a post's text.
 
 The dataset contains 200 posts and is divided into training, validation, and test sets. Model performance is evaluated using accuracy, macro F1, per-label F1 scores, and prediction-confidence comparisons. The goal is to explore how well a text-classification model can distinguish gameplay guides and analysis, help requests, and opinions or reactions.

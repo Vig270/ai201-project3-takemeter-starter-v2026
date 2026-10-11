@@ -86,19 +86,17 @@
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** Public posts from the Wizard101 subreddit.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** I independently labeled at least 20 posts without AI and marked them `cold` in the `note` column. For the remaining posts, I used AI to suggest initial labels, then reviewed each post and corrected labels when necessary.
 
 **Counts per label:**
 
 | Label | Count | Share |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| guide_analysis | 71 | 35.5%|
+| help_question | 66 | 33.0% |
+| opinion_reaction | 63 | 31.5% |
+| **Total** | 200 | 100% |
 
 **Three hard cases**
 
@@ -106,25 +104,25 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+>**The post:** "ice wizard is boring and too slow"
 >
-> *Could have been:*
+>**Could have been:** opinion_reaction — a negative opinion about a school; help_question — if interpreted as asking for help with the school's performance.
 >
-> *I chose, because:*
+>**I chose, because:** opinion_reaction, because the post expresses a negative opinion rather than directly asking for assistance.
 
 **2.**
-> *The post:*
+>**The post:** "the community complains too much about updates"
+
+>**Could have been:** opinion_reaction — an opinion about the community; help_question — if interpreted as asking how to deal with community complaints.
 >
-> *Could have been:*
->
-> *I chose, because:*
+>**I chose, because:** opinion_reaction, because the post expresses an opinion about the community's reactions to updates.
 
 **3.**
-> *The post:*
+>**The post:** "gear crafting vs farming comparison"
+
+>**Could have been:** guide_analysis — a comparison of gear acquisition methods; help_question — if interpreted as asking which method is better.
 >
-> *Could have been:*
->
-> *I chose, because:*
+>**I chose, because:** guide_analysis, because the post compares gameplay methods rather than directly requesting help.
 
 ---
 

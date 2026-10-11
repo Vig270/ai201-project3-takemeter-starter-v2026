@@ -39,9 +39,20 @@
 
 ## What This Does
 
-<!-- Your community, and what your classifier sorts posts into. Three or four
-     sentences. -->
+## What This Does
 
+TakeMeter is a text-classification project that categorizes public posts from the Wizard101 subreddit into three labels: `guide_analysis`, `help_question`, and `opinion_reaction`. It uses a fine-tuned DistilBERT model to predict a label based on a post's text.
+
+The dataset contains 200 posts and is divided into training, validation, and test sets. Model performance is evaluated using accuracy, macro F1, per-label F1 scores, and prediction-confidence comparisons. The goal is to explore how well a text-classification model can distinguish gameplay guides and analysis, help requests, and opinions or reactions.
+
+## How I Used AI
+
+I used AI assistance during this project in two specific ways:
+
+1. **Dataset pre-labeling:** I used AI to suggest initial labels for some Wizard101 posts. I reviewed the suggested labels and made corrections when necessary. I also independently labeled at least 20 posts without AI and marked those rows as `cold` in the `note` column.
+2. **Learning and troubleshooting:** I used AI to help me understand the project instructions, troubleshoot Python and notebook environment errors, and interpret model-training and evaluation output. I ran the notebook and checked the results myself.
+
+AI-generated labels were treated as suggestions rather than automatically accepted answers. The model's reported performance should also be considered in the context of the dataset's size and labeling process.
 
 
 ---

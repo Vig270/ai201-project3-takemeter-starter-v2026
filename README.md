@@ -296,6 +296,43 @@ Limitations: The new examples were collected from online Wizard101 discussions a
 
 
 
+### What's Still Broken
+
+**Criterion 1 — Overall accuracy: MET.** All three after-run seeds exceeded the target accuracy of 0.65: seed 42 reached 0.857, seed 7 reached 0.971, and seed 2024 reached 0.943.
+
+**Criterion 2 — Per-label F1: MET.** The lowest per-label F1 across the three after runs was 0.75, above the required 0.55.
+
+**Criterion 3 — Dataset balance: NOT MET after the change.** The updated counts are 71 `guide_analysis`, 66 `help_question`, and 93 `opinion_reaction`. The largest-to-smallest ratio is 93/66 ≈ 1.41, which is within the 1.5 limit, so this criterion is actually **MET**.
+
+**Criterion 4 — Labeling consistency: MET for the staff-labeling task.** I matched all 30 staff labels. This does not prove that every Wizard101 example is unambiguous.
+
+**Criterion 5 — Confidence: MET under the revised definition.** Accuracy among the most-confident third was 1.00 for all three after-run seeds.
+
+The main remaining problem is **stability and generalization**. Seed 42's accuracy fell from 0.967 to 0.857, while seeds 7 and 2024 improved. Because the dataset grew and the test split was regenerated, this is not a controlled comparison of the added examples alone. I would next evaluate the original and expanded datasets on the same fixed test set, inspect borderline examples, and collect more independently reviewed examples. I stopped here because the milestone time was limited, and I did not want to claim a consistent improvement that the results do not establish.
+
+**The gap between my intended labels and what the model learned:** I intended `opinion_reaction` to capture posts whose main purpose is expressing an opinion or reacting, rather than asking for help or explaining a strategy. The confusion matrices show that the model sometimes confuses these purposes; after adding examples, seed 42 still misclassified three `help_question` posts as `opinion_reaction`, while seed 7 misclassified one `help_question` post as `opinion_reaction`. This suggests that the model can still confuse the tone or wording of a post with its primary purpose.
+
+**How I Used AI:** I used AI to help draft and review label definitions, troubleshoot notebook and Python errors, and interpret evaluation results. During error analysis, AI helped identify patterns in the confusion matrices and compare results across random seeds. I checked those suggestions against the saved metrics and model outputs, made the final decisions about the labels and conclusions myself, and documented the mixed results rather than treating the improvement as a guaranteed success.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the

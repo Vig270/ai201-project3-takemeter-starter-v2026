@@ -232,18 +232,22 @@ The trained DistilBERT model outperformed the zero-shot BART-large-MNLI baseline
 | 2024 | 0.900 | 0.898
 
 Device: CPU
-
-
-
 PyTorch: 2.14.1+cpu
-
-
-
 Accuracy spread: 13.4 percentage points
-
-
-
 Observation: Accuracy varies by more than the milestone's approximate 10-point threshold across seeds.
+
+### Milestone 3: Agreement with Staff Labels
+
+I independently labeled all 30 posts using the staff taxonomy before comparing my labels with the staff answer key.
+
+- **Posts compared:** 30
+- **Agreements:** 30
+- **Disagreements:** 0
+- **Agreement rate:** 100%
+
+The set felt manageable because the taxonomy's distinctions between evidence-backed analysis, unsupported hot takes, and immediate personal reactions provided clear decision rules. Matching all staff labels suggests that I applied these distinctions consistently on this set. However, one set of 30 posts does not prove that every rule is unambiguous in all cases.
+
+
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which

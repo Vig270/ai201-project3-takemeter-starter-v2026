@@ -279,6 +279,23 @@ Error diagnosis: Seed 7 had the weakest performance on opinion_reaction: recall 
 Overall conclusion: All five criteria meet their original or documented revised targets. However, the 13.3-percentage-point accuracy range between the best and worst seed shows that performance is sensitive to the training seed, and opinion_reaction is a notable source of errors in seed 7.
 
 
+### Milestone 5 — Add examples to opinion_reaction
+
+Improvement tested: Added 30 additional opinion_reaction examples, increasing that class from 63 to 93 examples. The other classes remained unchanged: guide_analysis = 71 and help_question = 66. The dataset increased from 200 to 230 examples
+
+
+| seed | before accuracy | after accuracy | after Macro F1
+42	| 96.7%	| 85.7%	| 0.844
+7	| 83.3%	| 97.1%	| 0.971
+2024	| 90.0%	| 94.3%	| 0.936
+
+Interpretation: Results were mixed across seeds. Accuracy improved for seeds 7 and 2024 but decreased for seed 42. The experiment does not establish a consistent improvement. Because the dataset was expanded and the stratified splits were regenerated, the before and after test sets may differ; therefore, these scores should be treated as an exploratory comparison rather than a controlled measurement of the added examples alone.
+
+Limitations: The new examples were collected from online Wizard101 discussions and assigned to opinion_reaction. Their wording and labels should be checked against the project's labeling rules, and the results should be interpreted with the changed dataset and test splits in mind.
+
+
+
+
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the

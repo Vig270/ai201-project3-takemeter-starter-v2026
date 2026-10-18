@@ -1,0 +1,164 @@
+[
+  {
+    "seed": 42,
+    "n_test": 35,
+    "accuracy": 0.8571428571428571,
+    "f1_macro": 0.8444444444444444,
+    "per_label": {
+      "guide_analysis": {
+        "precision": 0.8461538461538461,
+        "recall": 1.0,
+        "f1": 0.9166666666666666,
+        "support": 11
+      },
+      "help_question": {
+        "precision": 1.0,
+        "recall": 0.6,
+        "f1": 0.75,
+        "support": 10
+      },
+      "opinion_reaction": {
+        "precision": 0.8125,
+        "recall": 0.9285714285714286,
+        "f1": 0.8666666666666667,
+        "support": 14
+      }
+    },
+    "confusion": {
+      "guide_analysis": {
+        "guide_analysis": 11,
+        "help_question": 0,
+        "opinion_reaction": 0
+      },
+      "help_question": {
+        "guide_analysis": 1,
+        "help_question": 6,
+        "opinion_reaction": 3
+      },
+      "opinion_reaction": {
+        "guide_analysis": 1,
+        "help_question": 0,
+        "opinion_reaction": 13
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.45333394408226013,
+      "mean_when_wrong": 0.3783392906188965,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.6363636363636364,
+      "n_per_third": 11
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  },
+  {
+    "seed": 7,
+    "n_test": 35,
+    "accuracy": 0.9714285714285714,
+    "f1_macro": 0.9709618874773139,
+    "per_label": {
+      "guide_analysis": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 11
+      },
+      "help_question": {
+        "precision": 1.0,
+        "recall": 0.9,
+        "f1": 0.9473684210526315,
+        "support": 10
+      },
+      "opinion_reaction": {
+        "precision": 0.9333333333333333,
+        "recall": 1.0,
+        "f1": 0.9655172413793104,
+        "support": 14
+      }
+    },
+    "confusion": {
+      "guide_analysis": {
+        "guide_analysis": 11,
+        "help_question": 0,
+        "opinion_reaction": 0
+      },
+      "help_question": {
+        "guide_analysis": 0,
+        "help_question": 9,
+        "opinion_reaction": 1
+      },
+      "opinion_reaction": {
+        "guide_analysis": 0,
+        "help_question": 0,
+        "opinion_reaction": 14
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.44262921810150146,
+      "mean_when_wrong": 0.3471445143222809,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.9090909090909091,
+      "n_per_third": 11
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  },
+  {
+    "seed": 2024,
+    "n_test": 35,
+    "accuracy": 0.9428571428571428,
+    "f1_macro": 0.9363636363636364,
+    "per_label": {
+      "guide_analysis": {
+        "precision": 1.0,
+        "recall": 0.8181818181818182,
+        "f1": 0.9,
+        "support": 11
+      },
+      "help_question": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "support": 10
+      },
+      "opinion_reaction": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 14
+      }
+    },
+    "confusion": {
+      "guide_analysis": {
+        "guide_analysis": 9,
+        "help_question": 2,
+        "opinion_reaction": 0
+      },
+      "help_question": {
+        "guide_analysis": 0,
+        "help_question": 10,
+        "opinion_reaction": 0
+      },
+      "opinion_reaction": {
+        "guide_analysis": 0,
+        "help_question": 0,
+        "opinion_reaction": 14
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.4656069278717041,
+      "mean_when_wrong": 0.4211529493331909,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.9090909090909091,
+      "n_per_third": 11
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  }
+]

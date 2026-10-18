@@ -1,0 +1,164 @@
+[
+  {
+    "seed": 42,
+    "n_test": 30,
+    "accuracy": 0.9666666666666667,
+    "f1_macro": 0.9658994032395567,
+    "per_label": {
+      "guide_analysis": {
+        "precision": 0.9166666666666666,
+        "recall": 1.0,
+        "f1": 0.9565217391304348,
+        "support": 11
+      },
+      "help_question": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 10
+      },
+      "opinion_reaction": {
+        "precision": 1.0,
+        "recall": 0.8888888888888888,
+        "f1": 0.9411764705882353,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "guide_analysis": {
+        "guide_analysis": 11,
+        "help_question": 0,
+        "opinion_reaction": 0
+      },
+      "help_question": {
+        "guide_analysis": 0,
+        "help_question": 10,
+        "opinion_reaction": 0
+      },
+      "opinion_reaction": {
+        "guide_analysis": 1,
+        "help_question": 0,
+        "opinion_reaction": 8
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.46791619062423706,
+      "mean_when_wrong": 0.38238242268562317,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.9,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  },
+  {
+    "seed": 7,
+    "n_test": 30,
+    "accuracy": 0.8333333333333334,
+    "f1_macro": 0.8046398046398046,
+    "per_label": {
+      "guide_analysis": {
+        "precision": 0.7333333333333333,
+        "recall": 1.0,
+        "f1": 0.8461538461538461,
+        "support": 11
+      },
+      "help_question": {
+        "precision": 0.9090909090909091,
+        "recall": 1.0,
+        "f1": 0.9523809523809523,
+        "support": 10
+      },
+      "opinion_reaction": {
+        "precision": 1.0,
+        "recall": 0.4444444444444444,
+        "f1": 0.6153846153846154,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "guide_analysis": {
+        "guide_analysis": 11,
+        "help_question": 0,
+        "opinion_reaction": 0
+      },
+      "help_question": {
+        "guide_analysis": 0,
+        "help_question": 10,
+        "opinion_reaction": 0
+      },
+      "opinion_reaction": {
+        "guide_analysis": 4,
+        "help_question": 1,
+        "opinion_reaction": 4
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.43724191188812256,
+      "mean_when_wrong": 0.3630826771259308,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.5,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  },
+  {
+    "seed": 2024,
+    "n_test": 30,
+    "accuracy": 0.9,
+    "f1_macro": 0.8977272727272728,
+    "per_label": {
+      "guide_analysis": {
+        "precision": 0.9090909090909091,
+        "recall": 0.9090909090909091,
+        "f1": 0.9090909090909091,
+        "support": 11
+      },
+      "help_question": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "support": 10
+      },
+      "opinion_reaction": {
+        "precision": 1.0,
+        "recall": 0.7777777777777778,
+        "f1": 0.875,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "guide_analysis": {
+        "guide_analysis": 10,
+        "help_question": 1,
+        "opinion_reaction": 0
+      },
+      "help_question": {
+        "guide_analysis": 0,
+        "help_question": 10,
+        "opinion_reaction": 0
+      },
+      "opinion_reaction": {
+        "guide_analysis": 1,
+        "help_question": 1,
+        "opinion_reaction": 7
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.4449640214443207,
+      "mean_when_wrong": 0.37928780913352966,
+      "accuracy_most_confident_third": 1.0,
+      "accuracy_least_confident_third": 0.8,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 128
+  }
+]

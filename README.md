@@ -220,11 +220,30 @@ The trained DistilBERT model outperformed the zero-shot BART-large-MNLI baseline
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
+| true \ predicted | guide_analysis | help_question | opinion_reaction |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **guide_analysis** | 11 | 0 | 0 |
+| **help_question** | 0 | 10 | 0 |
+| **opinion_reaction** | 1 | 0 | 8 |
+
+| seed | accuracy | Macro F1
+| 42 | 0.967 |	0.966
+| 7 | 0.833 | 0.805
+| 2024 | 0.900 | 0.898
+
+Device: CPU
+
+
+
+PyTorch: 2.14.1+cpu
+
+
+
+Accuracy spread: 13.4 percentage points
+
+
+
+Observation: Accuracy varies by more than the milestone's approximate 10-point threshold across seeds.
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which

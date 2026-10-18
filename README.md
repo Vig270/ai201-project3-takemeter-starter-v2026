@@ -193,12 +193,10 @@ I used AI to suggest initial labels for some of the 200 Wizard101 subreddit post
 | F1 — `label_two` |  |  |  |
 
 **What I predicted before I looked:**
-<!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
-     prediction made afterwards isn't one. -->
+I predict that my trained DistilBERT model will outperform the baseline in overall accuracy and macro F1 because it was fine-tuned on my Wizard101 dataset.
 
 **What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
+The trained DistilBERT model outperformed the zero-shot BART-large-MNLI baseline on the same 30 held-out posts, improving accuracy from 0.800 to 0.967 and macro F1 from 0.801 to 0.966. This suggests that fine-tuning helped the model learn distinctions between the three Wizard101 labels, although the small test set limits how confidently the results generalize to new posts.
 
 
 

@@ -1,0 +1,184 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.8,
+    "f1_macro": 0.8013366750208856,
+    "per_label": {
+      "guide_analysis": {
+        "precision": 0.8888888888888888,
+        "recall": 0.7272727272727273,
+        "f1": 0.7999999999999999,
+        "support": 11
+      },
+      "help_question": {
+        "precision": 0.7272727272727273,
+        "recall": 0.8,
+        "f1": 0.761904761904762,
+        "support": 10
+      },
+      "opinion_reaction": {
+        "precision": 0.8,
+        "recall": 0.8888888888888888,
+        "f1": 0.8421052631578948,
+        "support": 9
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "AoE spam strategy for PvE farming",
+      "gold": "guide_analysis",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "the game is better with friends",
+      "gold": "opinion_reaction",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "fire wizard is actually the most fun school",
+      "gold": "opinion_reaction",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "best dungeon farming strategies",
+      "gold": "guide_analysis",
+      "predicted": "guide_analysis"
+    },
+    {
+      "text": "world progression guide from Wizard City onward",
+      "gold": "guide_analysis",
+      "predicted": "guide_analysis"
+    },
+    {
+      "text": "how to farm XP efficiently Wizard101",
+      "gold": "guide_analysis",
+      "predicted": "help_question"
+    },
+    {
+      "text": "how do I get reagents faster",
+      "gold": "help_question",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "what is pet training strategy",
+      "gold": "help_question",
+      "predicted": "guide_analysis"
+    },
+    {
+      "text": "A Wizard's Guide to Pets discussion",
+      "gold": "guide_analysis",
+      "predicted": "guide_analysis"
+    },
+    {
+      "text": "what is the best pet for damage",
+      "gold": "help_question",
+      "predicted": "help_question"
+    },
+    {
+      "text": "wizard101 combat system is outdated",
+      "gold": "opinion_reaction",
+      "predicted": "help_question"
+    },
+    {
+      "text": "how to optimize PvP deck for consistent wins",
+      "gold": "guide_analysis",
+      "predicted": "guide_analysis"
+    },
+    {
+      "text": "too many paywalls in early game",
+      "gold": "opinion_reaction",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "the summer 2026 update made the game worse overall",
+      "gold": "opinion_reaction",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "death school is actually underrated",
+      "gold": "opinion_reaction",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "what is the fastest way to get gold",
+      "gold": "help_question",
+      "predicted": "help_question"
+    },
+    {
+      "text": "what does pierce stat do in Wizard101",
+      "gold": "help_question",
+      "predicted": "help_question"
+    },
+    {
+      "text": "how do I farm gear efficiently",
+      "gold": "help_question",
+      "predicted": "help_question"
+    },
+    {
+      "text": "how do I beat difficult cheating bosses",
+      "gold": "help_question",
+      "predicted": "help_question"
+    },
+    {
+      "text": "how to beat cheating bosses efficiently",
+      "gold": "guide_analysis",
+      "predicted": "guide_analysis"
+    },
+    {
+      "text": "best PvE farming builds explained",
+      "gold": "guide_analysis",
+      "predicted": "guide_analysis"
+    },
+    {
+      "text": "how do I use blades and traps correctly",
+      "gold": "help_question",
+      "predicted": "help_question"
+    },
+    {
+      "text": "too many worlds feel repetitive",
+      "gold": "opinion_reaction",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "advanced PvE rotation strategy",
+      "gold": "guide_analysis",
+      "predicted": "guide_analysis"
+    },
+    {
+      "text": "how critical rating works in Wizard101",
+      "gold": "guide_analysis",
+      "predicted": "help_question"
+    },
+    {
+      "text": "how do I get help from Discord or Reddit",
+      "gold": "help_question",
+      "predicted": "help_question"
+    },
+    {
+      "text": "wizard101 is dying slowly",
+      "gold": "opinion_reaction",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "the game is too expensive for new players",
+      "gold": "opinion_reaction",
+      "predicted": "opinion_reaction"
+    },
+    {
+      "text": "what is the best school for beginners",
+      "gold": "help_question",
+      "predicted": "help_question"
+    },
+    {
+      "text": "W101 Level 1-30 guide discussion",
+      "gold": "guide_analysis",
+      "predicted": "guide_analysis"
+    }
+  ]
+}

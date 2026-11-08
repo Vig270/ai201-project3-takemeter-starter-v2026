@@ -329,3 +329,122 @@ before you push.
 
 **Do not delete and recreate this repository.** You submit the same URL both
 units.
+
+
+
+##Unit 9
+
+# Running TakeMeter
+
+## 1. Project Overview
+
+TakeMeter is a Wizard101 discussion classifier built using DistilBERT.
+
+It classifies posts into three categories:
+
+- `guide_analysis`
+- `help_question`
+- `opinion_reaction`
+
+The system also includes confidence-based abstention. When the model's highest prediction confidence is below 70%, it returns `needs_review` instead of forcing a classification.
+
+## 2. Requirements
+
+- Python 3.11.9
+- pip
+- Windows PowerShell (or another terminal)
+- The saved TakeMeter model and tokenizer
+
+The trained model is stored locally in:
+
+`takemeter_out/final_model/`
+
+The model weights (`model.safetensors`) are approximately 268 MB.
+
+## 3. Environment Setup
+
+Open PowerShell in the project directory.
+
+Create and activate a virtual environment:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+Install the project dependencies:
+
+```powershell
+pip install -r requirements.txt
+```
+
+Make sure the saved model files are available in:
+
+`takemeter_out/final_model/`
+
+## 4. Running TakeMeter
+
+From the main project directory, run:
+
+```powershell
+python predict.py
+```
+
+Enter a Wizard101 discussion post when prompted.
+
+The system displays:
+
+- Final prediction
+- Original model prediction
+- Prediction confidence
+- Execution time in milliseconds
+
+To enter multiple posts, continue typing posts when prompted.
+
+Type `exit` to stop the program.
+
+## 5. Confidence-Based Abstention
+
+TakeMeter uses a confidence threshold of 0.70 (70%).
+
+- Confidence below 70%: returns `needs_review`.
+- Confidence at or above 70%: returns one of the three original classification labels.
+
+The original prediction and confidence score are retained even when the final prediction is `needs_review`.
+
+## 6. Prediction Logs
+
+Each prediction is automatically recorded in:
+
+`logs/predictions.jsonl`
+
+The log contains:
+
+- UTC timestamp
+- Original input text
+- Final prediction
+- Original prediction
+- Confidence score
+- Execution time in milliseconds
+
+The logs folder is created automatically when the program runs.
+
+## 7. Cost and Execution
+
+TakeMeter runs locally using the saved DistilBERT model on the CPU.
+
+It does not require an external model API or incur per-request API charges.
+
+Initial observed inference times were approximately 80–82 milliseconds per prediction on the development machine. Actual execution time may vary depending on hardware and system conditions.
+
+## 8. Troubleshooting
+
+**Model not found:** Verify that `takemeter_out/final_model/` contains the saved model and tokenizer files.
+
+**Missing dependencies:** Activate the virtual environment and run:
+
+```powershell
+pip install -r requirements.txt
+```
+
+**Prediction logs not appearing:** Verify that the program has permission to create files in the project directory and check `logs/predictions.jsonl` after running a prediction.

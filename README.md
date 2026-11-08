@@ -529,3 +529,46 @@ The standalone prediction script (`predict.py`) was tested using two Wizard101 p
 Both posts received confidence scores below the 70% threshold. TakeMeter correctly returned `needs_review` instead of presenting an uncertain prediction as a confident classification.
 
 These were initial implementation smoke tests, not the formal Unit 9 acceptance trials.
+
+
+
+
+
+
+@'
+
+## Instrumentation
+
+TakeMeter records each prediction in `logs/predictions.jsonl` using JSON Lines format (one JSON object per line).
+
+Each log entry records:
+- `timestamp`: UTC time when the prediction was made.
+- `input`: The submitted Wizard101 post.
+- `output`: The final prediction, including `needs_review` when confidence is below 70%.
+- `original_prediction`: The model's original predicted category.
+- `confidence`: The model's confidence score.
+- `duration_ms`: Prediction execution time in milliseconds.
+
+The following are 10 actual prediction log entries:
+
+```json
+{"timestamp": "2026-11-08T20:00:53.290994+00:00", "input": "Where can I farm good equipment at level 170?", "output": "needs_review", "original_prediction": "help_question", "confidence": 0.3866, "duration_ms": 81.85}
+{"timestamp": "2026-11-08T20:02:32.711495+00:00", "input": "Where can I farm good equipment at level 170?", "output": "needs_review", "original_prediction": "help_question", "confidence": 0.3866, "duration_ms": 80.45}
+{"timestamp": "2026-11-08T20:03:03.980329+00:00", "input": "How do I defeat the final boss in a dungeon as a Storm wizard?", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.3706, "duration_ms": 96.65}
+{"timestamp": "2026-11-08T20:03:12.047330+00:00", "input": "What is the best school for solo players?", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.3662, "duration_ms": 46.33}
+{"timestamp": "2026-11-08T20:03:18.906956+00:00", "input": "Can someone explain how critical rating works?", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.353, "duration_ms": 51.3}
+{"timestamp": "2026-11-08T20:03:27.375488+00:00", "input": "I think Balance is underrated in PvP.", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.4387, "duration_ms": 44.47}
+{"timestamp": "2026-11-08T20:03:34.698034+00:00", "input": "Here is my guide to farming Aeon gear step by step.", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.3869, "duration_ms": 47.83}
+{"timestamp": "2026-11-08T20:03:40.419164+00:00", "input": "What are the best pets for a Myth wizard?", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.3868, "duration_ms": 50.53}
+{"timestamp": "2026-11-08T20:03:45.536930+00:00", "input": "Is Fire better than Storm for PvE?", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.3753, "duration_ms": 81.75}
+{"timestamp": "2026-11-08T20:03:50.402508+00:00", "input": "Which dungeon gives the best drops for level 170 players?", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.3851, "duration_ms": 52.96}
+
+
+
+
+### Step 7: Verify the sections were added
+
+Run:
+
+```powershell
+Select-String -Path .\README.md -Pattern '^## Instrumentation|^## What It Costs'

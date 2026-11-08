@@ -571,4 +571,18 @@ The following are 10 actual prediction log entries:
 Run:
 
 ```powershell
-Select-String -Path .\README.md -Pattern '^## Instrumentation|^## What It Costs'
+Select-String -Path .\README.md -Pattern '^## Instrumentation|^## What It Costs' Prediction failures are also recorded in the JSONL log. Failed entries include `output: "error"`, `error_type`, `error_message`, and `duration_ms`. The application also displays the error in the terminal.
+Prediction failures are also recorded in the JSONL log. Failed entries include `output: "error"`, `error_type`, `error_message`, and `duration_ms`. The application also displays the error in the terminal.
+
+## What It Costs
+
+TakeMeter runs locally on the CPU using the saved model.
+
+- **Inference method:** Local CPU inference.
+- **Average execution time:** 63.412 milliseconds, measured across the first 10 logged predictions.
+- **External API cost:** $0.
+- **API tokens used:** 0.
+- **Model size:** Approximately 268 MB.
+- **Cloud inference cost:** $0.
+
+Local electricity and hardware costs still apply, but there are no external model API charges.

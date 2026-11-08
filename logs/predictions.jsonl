@@ -10,3 +10,5 @@
 {"timestamp": "2026-11-08T20:03:50.402508+00:00", "input": "Which dungeon gives the best drops for level 170 players?", "output": "needs_review", "original_prediction": "opinion_reaction", "confidence": 0.3851, "duration_ms": 52.96}
 {"timestamp": "2026-11-08T20:03:55.730475+00:00", "input": "1. How do I improve my damage and accuracy stats?", "output": "needs_review", "original_prediction": "help_question", "confidence": 0.3543, "duration_ms": 72.88}
 {"timestamp": "2026-11-08T20:04:08.007515+00:00", "input": " How do I improve my damage and accuracy stats?", "output": "needs_review", "original_prediction": "help_question", "confidence": 0.3979, "duration_ms": 39.76}
+{"timestamp": "2026-11-08T20:23:32.778201+00:00", "input": "How do I get better gear for my Storm wizard?", "output": "needs_review", "original_prediction": "help_question", "confidence": 0.3821, "duration_ms": 87.22}
+{"timestamp": "2026-11-08T20:25:54.791098+00:00", "input": null, "output": "error", "error_type": "ValueError", "error_message": "You need to specify either `text` or `text_target`.", "duration_ms": 0.01}

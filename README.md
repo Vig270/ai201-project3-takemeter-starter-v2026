@@ -514,3 +514,18 @@ learned:**
 **Run path:** I will use Path B (local with logs). The classifier uses a locally loaded DistilBERT model, so running locally is more appropriate than relying on a free hosting environment with limited memory. I will document the setup, dependencies, and single command needed to run the system in `RUNNING.md`.
 
 **Out of scope:** I will not add a fourth classification category, introduce another machine-learning model, or rebuild the application with a web interface. The focus is limited to confidence-based abstention, reproducible local execution, and measuring the results.
+
+
+
+### Initial Implementation Test
+
+The standalone prediction script (`predict.py`) was tested using two Wizard101 posts.
+
+| Test | Original Prediction | Confidence | Final Prediction |
+|---|---|---:|---|
+| Best gear setup for a level 170 Storm wizard | opinion_reaction | 38.31% | needs_review |
+| Advice on getting better gear and farming dungeons | opinion_reaction | 43.01% | needs_review |
+
+Both posts received confidence scores below the 70% threshold. TakeMeter correctly returned `needs_review` instead of presenting an uncertain prediction as a confident classification.
+
+These were initial implementation smoke tests, not the formal Unit 9 acceptance trials.

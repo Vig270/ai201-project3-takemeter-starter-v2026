@@ -498,3 +498,19 @@ learned:**
 ---
 
 📖 **How to run this project: [RUNNING.md](RUNNING.md)**
+
+
+
+
+
+## Unit 9 — The Shape
+
+## The Shape
+
+**System:** TakeMeter — my Wizard101 discussion classifier, built using DistilBERT and three labels: `guide_analysis`, `help_question`, and `opinion_reaction`.
+
+**Shape C — Extend one capability:** I will add confidence-based abstention to the existing classifier. Instead of forcing a prediction when the model is uncertain, the system will return `needs_review` when its highest prediction confidence falls below a defined threshold. This will give users a way to identify posts that may need human review.
+
+**Run path:** I will use Path B (local with logs). The classifier uses a locally loaded DistilBERT model, so running locally is more appropriate than relying on a free hosting environment with limited memory. I will document the setup, dependencies, and single command needed to run the system in `RUNNING.md`.
+
+**Out of scope:** I will not add a fourth classification category, introduce another machine-learning model, or rebuild the application with a web interface. The focus is limited to confidence-based abstention, reproducible local execution, and measuring the results.

@@ -145,3 +145,75 @@ Before using these, I will write my own rationale for each target and confirm th
      A number you missed stays where it is, gets diagnosed, and gets a fix
      attempted. That's where the points are.
      ───────────────────────────────────────────────────────────────────────── -->
+
+
+
+
+
+# Criteria Self-Check — TakeMeter
+# Unit 9 — Extension Acceptance Criteria
+
+## 1. Overall Accuracy (at least 0.65)
+
+- **How would I test it?** Calculate the model's overall accuracy on the held-out test dataset by dividing the number of correct predictions by the total number of predictions.
+- **Would two people score it the same way?** Yes. Both people would use the same test dataset and compare predictions against the actual labels.
+- **What would make it fail?** An overall accuracy below 0.65.
+
+## 2. Per-Label Performance (at least 0.55)
+
+- **How would I test it?** Calculate the performance metric selected for each of the three labels using the held-out test dataset.
+- **Would two people score it the same way?** Yes, provided they use the same metric, dataset, and calculation method.
+- **What would make it fail?** Any label scoring below 0.55.
+
+## 3. Dataset Balance (largest label no more than 1.5 times the smallest)
+
+- **How would I test it?** Count the examples belonging to each of the three labels and divide the largest label count by the smallest label count.
+- **Would two people score it the same way?** Yes. Both people would count the examples in the same dataset and calculate the same ratio.
+- **What would make it fail?** The largest label containing more than 1.5 times the examples of the smallest label.
+
+## 4. Labeling Consistency (at least 0.70)
+
+- **How would I test it?** Have two people independently label the same set of posts and calculate the percentage of posts where their labels match.
+- **Would two people score it the same way?** Yes, if they use the same posts and label definitions and calculate the percentage of matching labels.
+- **What would make it fail?** Agreement below 70%.
+
+## 5. Prediction Confidence (at least 0.75)
+
+- **How would I test it?** Evaluate predictions with confidence scores of at least 0.75 and calculate the percentage that have the correct predicted label.
+- **Would two people score it the same way?** Yes, if they use the same predictions, confidence cutoff, and actual labels to calculate correctness.
+- **What would make it fail?** Fewer than 75% of the high-confidence predictions being correct.
+
+
+
+# Unit 9 — Extension Acceptance Criteria
+
+## 1. Confidence-Based Abstention
+
+**Criterion:** When testing 10 posts with confidence below 0.70, all of them must return `needs_review`.
+
+**Why this target:** I chose this target because needs to be in review to see specifics.
+
+## 2. Local CPU Inference
+
+**Criterion:** The model must complete 10 out of 10 prediction tests using local CPU inference.
+
+**Why this target:** I chose this target because for fair testing.
+
+## 3. Prediction Logging
+
+**Criterion:** When I run all successful predictions, all must be recorded in `logs/predictions.jsonl`, including the prediction, confidence, and execution time.
+
+**Why this target:** I chose this target because to see what each of them say.
+
+## 4. Failure Handling
+
+**Criterion:** When I test each questions invalid inputs, all must be recorded with an error status and error details in `logs/predictions.jsonl`.
+
+**Why this target:** I chose this target because for find each categories and see if it is correct and
+see what happens after you fail.
+
+## 5. Execution Time
+
+**Criterion:** The average prediction execution time across 10 test inputs must be below few milliseconds.
+
+**Why this target:** I chose this target because to classify each of them individual. 

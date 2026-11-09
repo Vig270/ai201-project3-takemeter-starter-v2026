@@ -349,22 +349,33 @@ The main remaining problem is **stability and generalization**. Seed 42's accura
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | C1 — Confidence-Based Abstention | 10/10 in each trial | 10/10 in each trial | MET |
+| 2 | C2 — Local CPU Inference | 10/10 in each trial | 10/10 in each trial | MET |
+| 3 | C3 — Prediction Logging | 10/10 in each trial | 10/10 in each trial | MET |
+| 4 | C4 — Failure Handling | 10/10 in each trial | 5/5 in each trial | MET |
+| 5 | C5 — Execution Time | All three averages below 100 ms | All three averages below 100 ms | MET |
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+C1 — Confidence-Based Abstention: MET
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+All 10 test posts had confidence below the 0.70 threshold and were correctly returned as needs_review in all three trials. No failures occurred.
+
+C2 — Local CPU Inference: MET
+
+The model device was confirmed as CPU. All 10 predictions completed successfully in every trial. No GPU was required.
+
+C3 — Prediction Logging: MET
+
+All 10 successful predictions were recorded in logs/predictions.jsonl during each trial. Every entry contained the required fields: output, confidence, and duration_ms.
+
+C4 — Failure Handling: MET
+
+All five invalid inputs (None, 123, [], {}, and 3.14) generated error log entries containing output, error_type, and error_message in all three trials. The empty list produced an IndexError, while the other inputs produced ValueError exceptions. All were handled and logged.
+
+C5 — Execution Time: MET
+
+All three post-improvement trial averages remained below the operational target of 100 ms. However, the average execution time increased compared with the Milestone 5 results. The warm-up improvement did not consistently reduce average prediction time.
 
 
 
@@ -430,20 +441,50 @@ The main remaining problem is **stability and generalization**. Seed 42's accura
 
 **Which diagnosis pointed at it:**
 
+
+Change Made: Model Warm-Up
+
+I added a warm-up inference step immediately after loading the model and setting it to evaluation mode in predict.py.
+
+The warm-up sends a short sample sentence through the model before it accepts real predictions. This was intended to reduce the overhead associated with the first real inference.
+
+Diagnosis and Reason
+
+The original implementation loaded the model and immediately accepted user predictions. The first inference could include additional initialization overhead.
+
+The improvement attempted to perform that initial inference work during model loading instead of during the first real prediction.
+
+Expected Benefit
+
+The expected benefit was more consistent execution time, particularly for the first prediction after the model loads.
+
+Trade-Off
+
+The warm-up adds an extra inference operation during startup. This can increase model loading time, even if it helps the first real prediction.
+
+Did It Help?
+
+The results did not demonstrate a consistent improvement in average prediction execution time.
+
+The original Milestone 5 average across three trials was 51.74 ms. The Milestone 6 average across three trials was 65.69 ms.
+
+Therefore, the warm-up change did not improve the overall average execution time in this experiment. However, the execution-time acceptance criterion remained MET because all three trial averages were below 100 ms.
+
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1.  | C1 — Confidence Abstention | 10/10 | 10/10 | 10/10 |  |
+| 2.  | C2 — CPU Inference | 10/10 | 10/10 | 10/10 |  |
+| 3.  | C3 — Prediction Logging | 10/10 | 10/10 | 10/10 |  |
+| 4.  | C4 — Failure Handling | 5/5 | 5/5 | 5/5 |  |
+| 5.  | C5 — Average Execution Time | 51.61 ms | 73.26 ms | 72.20 ms |  |
 
 **Did it help, and how do I know:**
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+C5 Overall Average: 65.69 ms
+
+All five criteria passed in all three trials.
 
 
 
@@ -451,7 +492,15 @@ The main remaining problem is **stability and generalization**. Seed 42's accura
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
+No Unit 9 acceptance criterion was missed during the Milestone 6 retesting.
+
+However, there are two observations worth documenting:
+
+Warm-up performance: The warm-up change did not improve the overall average execution time. It also adds work during startup. Further testing would be needed to determine whether keeping this change is worthwhile.
+
+Execution-time wording: The original Criterion 5 used the phrase "few milliseconds," which is not an exact measurable threshold. For repeatable testing, the Milestone 5 and Milestone 6 test protocol used an operational target of an average below 100 ms across 10 predictions. The original wording should be preserved, with this measurable clarification documented.
+
+Overall, the model continued to satisfy all five acceptance criteria after the improvement. The experiment also showed that making a code change does not automatically mean system performance improves.
 
 
 

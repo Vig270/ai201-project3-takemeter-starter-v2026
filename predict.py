@@ -33,6 +33,20 @@ model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
 model.to("cpu")
 model.eval()
 
+# Warm up the model before accepting real predictions
+warmup_inputs = tokenizer(
+    "TakeMeter warm-up.",
+    return_tensors="pt",
+    truncation=True,
+    padding="max_length",
+    max_length=128
+)
+
+with torch.no_grad():
+    model(**warmup_inputs)
+
+del warmup_inputs
+
 
 def predict_post(text):
     """Predict a Wizard101 post and log success or failure."""

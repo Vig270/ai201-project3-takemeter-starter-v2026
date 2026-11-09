@@ -217,3 +217,169 @@ see what happens after you fail.
 **Criterion:** The average prediction execution time across 10 test inputs must be below few milliseconds.
 
 **Why this target:** I chose this target because to classify each of them individual. 
+
+
+# TakeMeter — Milestone 5 Run Log
+
+## Test summary
+
+| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|---|
+| 1. Confidence-based abstention | 10/10 low-confidence posts return `needs_review` | 10/10 | 10/10 | 10/10 | MET |
+| 2. Local CPU inference | 10/10 predictions complete on CPU | 10/10 | 10/10 | 10/10 | MET |
+| 3. Prediction logging | 10/10 successful predictions logged with required fields | 10/10 | 10/10 | 10/10 | MET |
+| 4. Failure handling | 5/5 invalid inputs logged with error details | 5/5 | 5/5 | 5/5 | MET |
+| 5. Execution time | Average below 100 ms across 10 predictions | 52.95 ms | 51.18 ms | 51.08 ms | MET |
+
+---
+
+## Actual test output
+
+### Criterion 1 — Confidence-based abstention
+
+**Produced by:** `predict.py` — `predict_post()`
+
+**Trial 1 actual output:**
+
+```text
+CRITERION 1 — TRIAL 1
+1. Confidence: 36.08%
+   Prediction: needs_review
+   Check: PASS
+2. Confidence: 36.48%
+   Prediction: needs_review
+   Check: PASS
+3. Confidence: 47.52%
+   Prediction: needs_review
+   Check: PASS
+4. Confidence: 38.66%
+   Prediction: needs_review
+   Check: PASS
+5. Confidence: 45.76%
+   Prediction: needs_review
+   Check: PASS
+6. Confidence: 37.04%
+   Prediction: needs_review
+   Check: PASS
+7. Confidence: 47.40%
+   Prediction: needs_review
+   Check: PASS
+8. Confidence: 37.91%
+   Prediction: needs_review
+   Check: PASS
+9. Confidence: 35.30%
+   Prediction: needs_review
+   Check: PASS
+10. Confidence: 48.73%
+    Prediction: needs_review
+    Check: PASS
+---------------------------------------------
+Low-confidence posts checked: 10
+Correctly sent to review: 10
+```
+
+### Criterion 2 — Local CPU inference
+
+**Produced by:** `predict.py` — model initialization and `predict_post()`
+
+**Trial 1 actual output:**
+
+```text
+CRITERION 2 — TRIAL 1
+Model device: cpu
+1. Device: cpu | Prediction completed: True
+2. Device: cpu | Prediction completed: True
+3. Device: cpu | Prediction completed: True
+4. Device: cpu | Prediction completed: True
+5. Device: cpu | Prediction completed: True
+6. Device: cpu | Prediction completed: True
+7. Device: cpu | Prediction completed: True
+8. Device: cpu | Prediction completed: True
+9. Device: cpu | Prediction completed: True
+10. Device: cpu | Prediction completed: True
+---------------------------------------------
+Successful CPU predictions: 10/10
+```
+
+### Criterion 3 — Prediction logging
+
+**Produced by:** `predict.py` — `predict_post()` and `write_log()`
+
+**Log file:** `logs/predictions.jsonl`
+
+**Trial 1 actual log entry:**
+
+```json
+{
+  "timestamp": "2026-11-09T01:51:04.884455+00:00",
+  "input": "How do I get better gear for my Storm wizard?",
+  "output": "needs_review",
+  "original_prediction": "help_question",
+  "confidence": 0.3821,
+  "duration_ms": 92.76
+}
+```
+
+**Trial 1 actual test summary:**
+
+```text
+CRITERION 3 — TRIAL 1
+New log entries: 10
+Entries with required fields: 10
+Required fields: ['output', 'confidence', 'duration_ms']
+Successfully logged predictions: 10/10
+```
+
+### Criterion 4 — Failure handling
+
+**Produced by:** `predict.py` — `predict_post()` exception handler and `write_log()`
+
+**Log file:** `logs/predictions.jsonl`
+
+**Trial 1 actual log entry:**
+
+```json
+{
+  "timestamp": "2026-11-09T01:53:31.162971+00:00",
+  "input": null,
+  "output": "error",
+  "error_type": "ValueError",
+  "error_message": "You need to specify either `text` or `text_target`.",
+  "duration_ms": 0.01
+}
+```
+
+**Trial 1 actual test summary:**
+
+```text
+CRITERION 4 — TRIAL 1
+New failure log entries: 5
+Entries with error details: 5
+Failures correctly logged: 5/5
+```
+
+### Criterion 5 — Execution time
+
+**Produced by:** `predict.py` — `predict_post()`; execution time measured using `time.perf_counter()`
+
+**Trial 1 actual output:**
+
+```text
+CRITERION 5 — TRIAL 1
+1. Execution time: 86.16 ms
+2. Execution time: 47.26 ms
+3. Execution time: 47.37 ms
+4. Execution time: 49.22 ms
+5. Execution time: 56.35 ms
+6. Execution time: 50.2 ms
+7. Execution time: 48.22 ms
+8. Execution time: 47.6 ms
+9. Execution time: 44.66 ms
+10. Execution time: 52.41 ms
+---------------------------------------------
+Average execution time: 52.95 ms
+Target: Below 100 ms
+Verdict: MET
+```
+
+**All five criteria passed across three separate trials.**

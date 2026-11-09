@@ -625,6 +625,20 @@ Prediction failures are also recorded in the JSONL log. Failed entries include `
 
 ## What It Costs
 
+## What It Costs
+
+TakeMeter runs its model locally using CPU inference, so it does not require a paid external AI API for each prediction.
+
+My measured average execution time was **65.69 milliseconds per prediction**. I measured this by running 10 predictions in each of three trials after implementing the model warm-up, recording each prediction's `duration_ms`, and averaging the three trial averages.
+
+For 100 people submitting one post each per day:
+
+65.69 ms × 100 predictions = 6,569 ms
+
+6,569 ms ÷ 1,000 = **6.57 seconds of CPU inference time per day**.
+
+The marginal external API cost for these predictions is **$0**, because inference runs locally. This does not include the computer's electricity, hardware, or maintenance costs, which I did not separately measure.
+
 TakeMeter runs locally on the CPU using the saved model.
 
 - **Inference method:** Local CPU inference.
@@ -635,3 +649,31 @@ TakeMeter runs locally on the CPU using the saved model.
 - **Cloud inference cost:** $0.
 
 Local electricity and hardware costs still apply, but there are no external model API charges.
+
+
+
+
+
+
+
+## What's Still Broken
+
+All five Unit 9 acceptance criteria passed across all three Milestone 6 trials. There were no missed acceptance criteria that required another fix.
+
+One limitation remains: all 10 posts in the confidence-based abstention test were sent to `needs_review`. Although this demonstrates that the confidence threshold works, it does not demonstrate that the model can confidently classify a wide variety of real Wizard101 posts.
+
+If I had more time, I would evaluate the model using a larger and more diverse set of unseen posts, investigate its confidence scores, and identify whether the model needs additional training or confidence calibration.
+
+I also found that the warm-up improvement did not reduce the overall average execution time. I kept the experiment documented because it was useful to measure the actual result rather than assume the change improved performance.
+
+
+If I had another unit, I would first evaluate TakeMeter on a larger set of unseen Wizard101 posts to understand why so many predictions are being sent to `needs_review`. This would be my priority because improving classification confidence and reliability would make the system more useful to actual community moderators.
+
+
+## How I Used AI
+
+I used ChatGPT as a learning and debugging assistant throughout the project. It helped me understand Python and machine learning concepts, interpret project requirements, troubleshoot PowerShell and Python errors, and understand testing results.
+
+I also used AI to help organize my acceptance criteria, interpret execution-time measurements, and structure parts of my README documentation. I ran the project commands, performed the tests, reviewed the outputs, and made the final decisions about the implementation and reported results myself.
+
+AI was used as a support tool rather than a replacement for running and evaluating the project.

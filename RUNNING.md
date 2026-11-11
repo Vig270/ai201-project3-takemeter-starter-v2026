@@ -384,7 +384,7 @@ Make sure the saved model files are available in:
 
 ## 4. Running TakeMeter
 
-[if issue 
+[if issue run both as alternative
 train_experimental.py — retrain the experimental model.
 evaluate_experimental.py — evaluate the trained model.]
 

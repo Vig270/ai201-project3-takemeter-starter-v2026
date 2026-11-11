@@ -8,10 +8,10 @@ import torch.nn.functional as F
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 # Location of the saved TakeMeter model
-MODEL_DIR = "./takemeter_out/final_model"
+MODEL_DIR = "./takemeter_out_experimental/final_model"
 
 # Confidence threshold
-CONFIDENCE_THRESHOLD = 0.70
+CONFIDENCE_THRESHOLD = 0.40
 
 # Location of prediction logs
 LOG_FILE = "./logs/predictions.jsonl"

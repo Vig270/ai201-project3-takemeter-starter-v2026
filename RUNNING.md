@@ -1,4 +1,4 @@
-# Running TakeMeter
+﻿# Running TakeMeter
 
 Everything about how the starter works.
 
@@ -33,9 +33,9 @@ whether the packages import.
 run peaks around 2.1 GB. Neither is comfortable beside an editor and a browser
 on a 4 GB machine. `test.py` warns you.
 
-You'll see one `[WARN] Baseline model — not downloaded yet`. That's expected in
+You'll see one `[WARN] Baseline model â€” not downloaded yet`. That's expected in
 unit 5. **Clear it before the unit 6 session** by running `python baseline.py`
-once — downloading 1.6 GB during class is not how you want to spend a breakout.
+once â€” downloading 1.6 GB during class is not how you want to spend a breakout.
 
 > **No API key and no accounts for this pair.** Nothing here calls a hosted
 > model. The baseline and the training both run on your own machine.
@@ -48,10 +48,10 @@ possibilities and all of them work:
 | Device | What it means | Speed |
 |---|---|---|
 | `cuda` | An NVIDIA GPU | Under a minute per seed |
-| `mps` | Apple Silicon — M1 and later | Fast; much quicker than the CPU path |
+| `mps` | Apple Silicon â€” M1 and later | Fast; much quicker than the CPU path |
 | `cpu` | Everything else | A few minutes per seed. Three seeds is a coffee, not an afternoon |
 
-⚠️ **Write down which one you get.** It is part of your result, not a detail
+âš ï¸ **Write down which one you get.** It is part of your result, not a detail
 about your laptop. Two people running the same notebook on the same data with
 the same seed can get different numbers, because different hardware does the
 arithmetic in a slightly different order. Unit 6 asks you to report it beside
@@ -66,12 +66,12 @@ your three seeds, and `results.json` records it for you.
 1. Open it in VS Code (or `jupyter notebook`, if you prefer).
 2. **Pick the kernel: the `.venv` inside this project.** In VS Code that's the
    selector in the top right. Getting this wrong is the most common way the
-   first cell fails — it will say a package isn't installed when it is,
+   first cell fails â€” it will say a package isn't installed when it is,
    because it's looking at a different Python.
-3. Fill in the two lines at the top of section 1's second cell — your name and
+3. Fill in the two lines at the top of section 1's second cell â€” your name and
    email. They only label your results.
 
-> ⚠️ **Open it from your repo, not from a copy.** The notebook writes next to
+> âš ï¸ **Open it from your repo, not from a copy.** The notebook writes next to
 > your code and expects `labels.csv` to be there. If you open a copy from your
 > Downloads folder, it will tell you so rather than failing strangely.
 
@@ -84,8 +84,8 @@ here when the notebook writes them.
 **Commit them yourself**, the way you commit anything else. Nothing is pushed
 for you.
 
-- Section 5 writes `results.json` and `test_split.csv` — **unit 5**
-- Section 6 writes `results_three_seeds_<label>.json` — **unit 6**.
+- Section 5 writes `results.json` and `test_split.csv` â€” **unit 5**
+- Section 6 writes `results_three_seeds_<label>.json` â€” **unit 6**.
   Set `RUN_LABEL = "after"` in that cell before the Milestone 5 re-run, or the
   improvement overwrites the numbers you're comparing against.
 
@@ -93,7 +93,7 @@ for you.
 > reads the file. The notebook holds the data in memory once it has read it.
 
 > **Your edits to the notebook itself are yours to commit too.** `LABELS`, the
-> settings and the seed live in the file — if you change them, that's a change
+> settings and the seed live in the file â€” if you change them, that's a change
 > to your repo like any other.
 
 ### What's in it
@@ -123,10 +123,10 @@ Sections 6 and 7 are next unit. Nothing in unit 5 needs them.
 | `note` | `cold` for the 20 you labelled unaided, and a note on any you pre-labelled |
 
 `labels_template.csv` shows the shape. `data/practice_labels.csv` is the set
-used in class — 60 posts from a fictional running forum, already labelled, so
+used in class â€” 60 posts from a fictional running forum, already labelled, so
 you can run the whole notebook before you have data of your own.
 
-**One file, unsplit.** Don't split it yourself — the notebook does the 70/15/15
+**One file, unsplit.** Don't split it yourself â€” the notebook does the 70/15/15
 split, and splitting twice is how examples leak between training and test.
 
 ### The check before training
@@ -139,11 +139,11 @@ Section 2's last cell looks for the things that break a run or quietly ruin it:
 | `[FIX ME] 'x' is 78% of your data` | Over the brief's 70% cap. The model will learn to guess it |
 | `[look at] N duplicate posts` | They'll land in different splits and inflate your score. That's leakage |
 | `[look at] Only 12 examples of 'x'` | Its test split will be tiny, so its F1 will jump between seeds |
-| `[look at] 60 rows` | Under the submission floor. Training still runs — fine for the practice data |
+| `[look at] 60 rows` | Under the submission floor. Training still runs â€” fine for the practice data |
 
 ---
 
-## The baseline — unit 6
+## The baseline â€” unit 6
 
 ```bash
 python baseline.py
@@ -154,17 +154,17 @@ This runs a general model over your posts using **only your label
 definitions**, with no training. It's the fair opponent your fine-tuned model
 has to beat.
 
-**It scores `test_split.csv`** — the held-out posts the notebook saved in unit 5,
+**It scores `test_split.csv`** â€” the held-out posts the notebook saved in unit 5,
 the same ones your trained model was measured on. Two numbers from two different
 sets of posts aren't a comparison, which is why it reads that file rather than
 picking its own sample. If the file isn't there it says so, falls back to a
 random sample of `labels.csv`, and tells you to disclose that in your README.
 
 Runs **on your machine**. No account, no key. A few seconds per post, so 30
-posts takes a couple of minutes — that slowness is itself part of the finding.
+posts takes a couple of minutes â€” that slowness is itself part of the finding.
 
 Put your definitions in `label_definitions.txt`, one per line as
-`label: definition`, copied from your README. **The definitions are the prompt** —
+`label: definition`, copied from your README. **The definitions are the prompt** â€”
 they're the entire input the model gets.
 
 Without the file it falls back to bare label names, which is a much weaker
@@ -177,11 +177,11 @@ Trained** table ready to paste.
 
 ---
 
-## The agreement check — unit 6
+## The agreement check â€” unit 6
 
 Staff labelled 30 posts under the taxonomy in `data/staff_taxonomy.md`. You
-label the same 30 under **those** definitions — not the ones you designed in
-unit 5 — and then compare.
+label the same 30 under **those** definitions â€” not the ones you designed in
+unit 5 â€” and then compare.
 
 ```bash
 python agreement.py
@@ -192,7 +192,7 @@ come from your TF, and only after yours are done. Posts and labels join on `id`:
 
 | File | Where it comes from |
 |---|---|
-| `data/staff_taxonomy.md` | **Ships in the starter.** The three definitions and the decision rules staff used. Read it first — you label under *these*, not your own |
+| `data/staff_taxonomy.md` | **Ships in the starter.** The three definitions and the decision rules staff used. Read it first â€” you label under *these*, not your own |
 | `data/staff_posts.csv` | **Ships in the starter.** The 30 posts, no labels |
 | `data/staff_labels.csv` | **Your TF gives you this**, once your own labels are done |
 | `my_staff_labels.csv` | You make it: the same posts, labelled by you, with `text` and `label` columns |
@@ -210,14 +210,14 @@ python agreement.py --staff-posts posts.csv --staff-labels labels.csv
 ```
 
 Posts are matched on their text, so **paste it unchanged**. Retype or trim a
-post and it won't match — the script tells you which ones didn't.
+post and it won't match â€” the script tells you which ones didn't.
 
 It works out the rate and lists every disagreement. **It stops there on
 purpose.** The rate is arithmetic; the adjudication is the graded part, and your
 README has a block to fill in for each one.
 
 > This is the only instrument you have that can tell a labelling problem from a
-> model problem. Milestone 4 asks you to use it as exactly that — a label pair
+> model problem. Milestone 4 asks you to use it as exactly that â€” a label pair
 > you disagreed with staff about, and that your matrix also confuses, is a
 > finding about your labels rather than about the model.
 
@@ -228,33 +228,33 @@ README has a block to fill in for each one.
 | Command | What it does |
 |---|---|
 | `python test.py` | Checks your environment |
-| `python baseline.py` | The zero-shot baseline on your held-out posts — **unit 6** |
-| `python agreement.py` | Your labels vs. the staff set — **unit 6** |
+| `python baseline.py` | The zero-shot baseline on your held-out posts â€” **unit 6** |
+| `python agreement.py` | Your labels vs. the staff set â€” **unit 6** |
 | `python baseline.py --help` | All the options |
-| Notebook: sections 1–5 | Train once, write `results.json` — **unit 5** |
-| Notebook: sections 6–7 | Three seeds and the matrix — **unit 6** |
+| Notebook: sections 1â€“5 | Train once, write `results.json` â€” **unit 5** |
+| Notebook: sections 6â€“7 | Three seeds and the matrix â€” **unit 6** |
 
 ---
 
 ## Which piece goes with which milestone
 
-### Unit 5 — the build
+### Unit 5 â€” the build
 
 | Milestone | What you're doing | Where |
 |---|---|---|
 | 1 | Pick a community and read it | Nothing to run. Read for 20 minutes |
 | 2 | Design your labels | README, **Label Taxonomy** |
-| 3 | Write your criteria | `criteria.md` — all five are yours this time |
+| 3 | Write your criteria | `criteria.md` â€” all five are yours this time |
 | 4 | Collect and label 200 | `labels.csv` |
-| 5 | Run the training | Notebook, sections 1–5 |
+| 5 | Run the training | Notebook, sections 1â€“5 |
 | 6 | Write it up | README |
 
-### Unit 6 — the test
+### Unit 6 â€” the test
 
 | Milestone | What you're doing | Where |
 |---|---|---|
 | 1 | Run the baseline | `baseline.py` |
-| 2 | Retrain three times, read the matrix | Notebook, sections 6–7 |
+| 2 | Retrain three times, read the matrix | Notebook, sections 6â€“7 |
 | 3 | Check yourself against the staff labels | `agreement.py` |
 | 4 | Call each criterion, diagnose the misses | README |
 | 5 | Fix one thing and re-run | Notebook, section 6 with `RUN_LABEL = "after"` |
@@ -298,7 +298,7 @@ README has a block to fill in for each one.
 | The machine crawls during training | Close the browser and anything heavy. Training peaks around 2.1 GB |
 | `KeyError` during training | A label in your CSV isn't in `LABELS`. Check capitals and spaces |
 | Training takes an hour | You're on CPU. See the first row |
-| Accuracy swings 15 points between seeds | Your dataset is too small or too lopsided for a stable measure. **That's a diagnosis, not a mistake** — write it down |
+| Accuracy swings 15 points between seeds | Your dataset is too small or too lopsided for a stable measure. **That's a diagnosis, not a mistake** â€” write it down |
 | A label's F1 is 0.00 | It probably has almost nothing in the test split. Check the split table |
 | `baseline.py` says no `test_split.csv` | Unit 5's results section never finished. Re-run it, or note in your README that your comparison isn't like-for-like |
 | `baseline.py` is downloading forever | First run only, ~1.6 GB. Do it before class |
@@ -357,9 +357,9 @@ The system also includes confidence-based abstention. When the model's highest p
 
 The trained model is stored locally in:
 
-`takemeter_out/final_model/`
+`takemeter_out_experimental/final_model/`
 
-The model weights (`model.safetensors`) are approximately 268 MB.
+The experimental model files occupy approximately 256.34 MB. The original trained model is preserved separately in takemeter_out/final_model/.
 
 ## 3. Environment Setup
 
@@ -380,7 +380,7 @@ pip install -r requirements.txt
 
 Make sure the saved model files are available in:
 
-`takemeter_out/final_model/`
+`takemeter_out_experimental/final_model/`
 
 ## 4. Running TakeMeter
 
@@ -435,11 +435,11 @@ TakeMeter runs locally using the saved DistilBERT model on the CPU.
 
 It does not require an external model API or incur per-request API charges.
 
-Initial observed inference times were approximately 80–82 milliseconds per prediction on the development machine. Actual execution time may vary depending on hardware and system conditions.
+Initial inference-time measurements of approximately 80–82 milliseconds per prediction were recorded using the earlier model. The experimental model has not yet been independently benchmarked for execution time. Actual execution time may vary depending on hardware and system conditions.
 
 ## 8. Troubleshooting
 
-**Model not found:** Verify that `takemeter_out/final_model/` contains the saved model and tokenizer files.
+**Model not found:** Verify that `takemeter_out_experimental/final_model/` contains the saved model and tokenizer files.
 
 **Missing dependencies:** Activate the virtual environment and run:
 

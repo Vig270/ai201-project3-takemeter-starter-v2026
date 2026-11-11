@@ -439,6 +439,7 @@ All three post-improvement trial averages remained below the operational target 
 
 **What I changed:**
 
+
 **Which diagnosis pointed at it:**
 
 
@@ -486,6 +487,94 @@ C5 Overall Average: 65.69 ms
 
 All five criteria passed in all three trials.
 
+@'
+
+## Experimental Model Improvement — November 11, 2026
+
+After evaluating the original TakeMeter classifier, I conducted an experiment to improve classification across the three categories: `guide_analysis`, `help_question`, and `opinion_reaction`.
+
+### What I Changed
+
+I created a separate experimental dataset by adding 20 manually written `help_question` examples to the original 230-example dataset.
+
+I preserved the original train, validation, and test split:
+- Original training examples: 160
+- Additional training examples: 20
+- Experimental training examples: 180
+- Validation examples: 35
+- Held-out test examples: 35
+
+The original 35-example test set was kept unchanged. None of the 20 new examples had an exact text match with the held-out test examples.
+
+I trained a separate DistilBERT model using the same training configuration as the original model:
+- Base model: `distilbert-base-uncased`
+- Training epochs: 3
+- Learning rate: 2e-5
+- Batch size: 16
+- Maximum sequence length: 128
+
+The experimental model was saved separately in `takemeter_out_experimental/final_model`, preserving the original trained model.
+
+### Evaluation Results
+
+Both models were evaluated against the same 35 held-out test examples.
+
+| Metric | Original Model | Experimental Model |
+|---|---:|---:|
+| Accuracy | 85.71% | 97.14% |
+| Macro F1 | 0.8444 | 0.9732 |
+| Correct predictions | 30/35 | 34/35 |
+| Incorrect predictions | 5 | 1 |
+
+### Experimental Per-Class Results
+
+| Category | Precision | Recall | F1-score |
+|---|---:|---:|---:|
+| `guide_analysis` | 0.92 | 1.00 | 0.96 |
+| `help_question` | 1.00 | 1.00 | 1.00 |
+| `opinion_reaction` | 1.00 | 0.93 | 0.96 |
+
+The experimental model improved help-question recall from 60% to 100% on the held-out test set.
+
+### Additional Manual Testing
+
+I also tested 11 manually selected Wizard101 posts:
+- Help questions: 5/5 correct
+- Guide analysis: 2/2 correct
+- Opinion reactions: 4/4 correct
+
+I tested the model in the actual TakeMeter application with examples about farming gold. It correctly distinguished a question about farming gold, a guide about farming gold, and an opinion about farming gold.
+
+These manual tests were additional smoke tests, not an independent evaluation dataset.
+
+### Confidence Limitation
+
+Although the experimental model improved classification accuracy, confidence scores remained relatively low.
+
+On the 35 held-out test examples:
+- Average confidence: 51.89%
+- Lowest confidence: 42.10%
+- Highest confidence: 66.92%
+- Predictions reaching the existing 70% threshold: 0 out of 35
+
+Therefore, all 35 predictions would still be sent to `needs_review`.
+
+I kept the existing 70% confidence threshold rather than lowering it simply to increase automatic classifications.
+
+### Remaining Limitations and Future Improvements
+
+The experimental results are promising, but the held-out test set contains only 35 examples. The 20 additional training examples were manually written, and the 11 additional manual tests were not independently collected.
+
+If I continued improving TakeMeter, I would:
+- Collect more independently sourced and labeled Wizard101 posts across all three categories.
+- Evaluate the model on a larger and more diverse unseen dataset.
+- Investigate confidence calibration and the high `needs_review` rate.
+- Further investigate confusion between guide descriptions and opinion-based posts.
+
+The experimental model is now used by `predict.py`, while the original model and original prediction script are preserved as backups.
+
+'@ | Add-Content -Path .\README.md -Encoding UTF8
+
 
 
 ---
@@ -500,7 +589,11 @@ Warm-up performance: The warm-up change did not improve the overall average exec
 
 Execution-time wording: The original Criterion 5 used the phrase "few milliseconds," which is not an exact measurable threshold. For repeatable testing, the Milestone 5 and Milestone 6 test protocol used an operational target of an average below 100 ms across 10 predictions. The original wording should be preserved, with this measurable clarification documented.
 
+Experimental classification: Although the experimental model achieved 97.14% accuracy on the 35-example held-out test set, all 35 predictions remained below the existing 70% confidence threshold. Additional testing also revealed ambiguous cases, such as an opinion phrased as a question. More independently collected examples and confidence-calibration testing are needed.
+
 Overall, the model continued to satisfy all five acceptance criteria after the improvement. The experiment also showed that making a code change does not automatically mean system performance improves.
+
+
 
 
 
